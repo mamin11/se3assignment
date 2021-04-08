@@ -29,21 +29,11 @@
 
                     </div>
                     <div>
-                        <div class="inline-block align-bottom mr-5">
-                            <span class="text-2xl leading-none text-green-300 align-baseline">£</span>
-                            <span class="font-bold text-green-300 text-5xl leading-none align-baseline">{{$product->price_start}}</span>
-                            <span class="text-2xl text-green-300 leading-none align-baseline">.00</span>
-                        </div>
-                        <div class="inline-block align-bottom">
-                            <button class="bg-red-600 opacity-75 text-white rounded-full px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i> LATEST BID</button>
-                        </div>
+                        @livewire('latest-bid', ['product' => $product], key($product->id))
                     </div>
                     <div class="my-10">
                         <h4 class=" tracking-wide mb-3 text-2xl"><span class="font-semibold text-2xl text-red-600">Closing in:</span> 00:05:49 </h4>
-                        <input type="number" placeholder="Place Bid" class="focus:outline-none focus:ring focus:border-blue-300 opacity-75" />
-                            <button class="bg-blue-800 opacity-85 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
-                                Button
-                            </button>
+                        @livewire('bid', ['product' => $product], key($product->id))
                     </div>
                 </div>
             </div>
