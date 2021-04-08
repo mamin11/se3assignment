@@ -32,6 +32,10 @@
                         {{ __('Services') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+                        {{ __('Contact') }}
+                    </x-jet-nav-link>
+
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('contact')">
                         {{ __('FAQs') }}
                     </x-jet-nav-link>
