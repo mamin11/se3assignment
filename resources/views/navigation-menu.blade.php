@@ -20,7 +20,7 @@
                         {{ __('Home') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('contact')">
+                    <x-jet-nav-link href="{{ route('auction') }}" :active="request()->routeIs('auction')">
                         {{ __('Auctions') }}
                     </x-jet-nav-link>
 

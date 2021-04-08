@@ -25,6 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('contact', 'ContactController@index')->name('contact');
 Route::post('contact', 'ContactController@store');
 
+Route::get('auctions', 'AuctionController@index')->name('auction');
+Route::get('auction/{id}', 'AuctionController@viewone')->name('oneauction');
+Route::get('bidding/{id}', 'AuctionController@openitem')->name('bidonitem');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

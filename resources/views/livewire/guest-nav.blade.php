@@ -73,11 +73,70 @@
     
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-            <div class="pt-2 pb-3 space-y-1">
-                <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            {{-- <div class="pt-2 pb-3 space-y-1"> --}}
+                {{-- <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
-                </x-jet-responsive-nav-link>
-            </div>
+                </x-jet-responsive-nav-link> --}}
+                
+                @auth
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-jet-nav-link>
+                </div>
+                @endauth
+                
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Home') }}
+                    </x-jet-nav-link>
+                </div>
+                
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Auctions') }}
+                    </x-jet-nav-link>
+                </div>
+                
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Locations') }}
+                    </x-jet-nav-link>
+                </div>
+                
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Services') }}
+                    </x-jet-nav-link>
+                </div>
+                
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+                        {{ __('Contact') }}
+                    </x-jet-nav-link>
+                </div>
+                
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('FAQs') }}
+                    </x-jet-nav-link>
+                </div>
+                
+                @guest
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link align="right" href="{{ route('login') }}" :active="request()->routeIs('login')">
+                        {{ __('Login') }}
+                    </x-jet-nav-link>
+                </div>
+                
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-nav-link align="right" href="{{ route('register') }}" :active="request()->routeIs('register')">
+                        {{ __('Register') }}
+                    </x-jet-nav-link>
+                </div>
+
+                @endguest
+
     
 
         </div>
