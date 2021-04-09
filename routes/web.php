@@ -18,12 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'MyItemsController@index')->name('dashboard');
 
 Route::get('contact', 'ContactController@index')->name('contact');
 Route::post('contact', 'ContactController@store');
+
+// Route::get('myitems', '')->name('myitems');
 
 Route::get('auctions', 'AuctionController@index')->name('auction');
 Route::get('auction/{id}', 'AuctionController@viewone')->name('oneauction');

@@ -18,8 +18,8 @@
             <div class="flex justify-center mb-5">
                 <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-4 mt-10">
                     @foreach ($items as $item)
-                        <a @if($item->active) href="/bidding/{{$item->id}}" @endif >
-                            <div class="max-w-lg w-full rounded-lg shadow-lg p-4 transform transition duration-500 hover:scale-105 cursor-pointer">
+                        <a  href="/bidding/{{$item->id}}">
+                            <div class="max-w-lg w-full rounded-lg shadow-lg p-5 transform transition duration-500 hover:scale-105 cursor-pointer">
                                 <img class="w-full rounded-md" src="{{ Voyager::image(json_decode($item->getProductImage())[0]) }}" alt="product image" />
                                 <h3 class="font-semibold text-lg tracking-wide">{{$item->getProduct()->title}}.</h3>
                                 <h4 class="text-lg tracking-wide"><span class="font-semibold">Artist:</span> {{$item->getProduct()->artist_name}} </h4>
@@ -27,8 +27,8 @@
                                     {{$item->getProduct()->description}}
                                 </p>
                                 <h4 class=" text-lg tracking-wide"><span class="font-semibold">Estimated Price:</span> £{{$item->getProduct()->price_start}} - £{{$item->getProduct()->price_end}}</h4>
-                                <p class="text-red-500 font-bold py-8">@if($item->active) <img class="float-left " src="https://img.icons8.com/emoji/40/000000/green-circle-emoji.png"/> @else <img class="float-left" src="https://img.icons8.com/emoji/40/fa314a/red-circle-emoji.png"/> @endif
-                                    <span class="text-red-500 font-bold  float-right"><span class="text-gray-900 font-bold">{{$item->getLatestBidding() ? $item->getLatestBidding()->created_at->diffForHumans() : ''}}: </span>{{$item->getLatestBid()}}</span></p>
+                                <p class="w-1/2 float-left">@livewire('auction-status-image', ['item' => $item], key($item->id))</p><br>
+                                <span class="text-red-500 font-bold mb-5 float-left"><span class="text-gray-900 font-bold">{{$item->getLatestBidding() ? $item->getLatestBidding()->created_at->diffForHumans() : ''}}: </span>{{$item->getLatestBid()}}</span></p>
                             </div>
                         </a>
                     @endforeach

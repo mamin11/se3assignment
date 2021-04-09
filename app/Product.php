@@ -23,6 +23,16 @@ class Product extends Model
         return;
     }
 
+    
+    public function getLatestBid() {
+        $aucItem = AuctionItem::where('product_id', $this->id)->first();
+        $bid = ProductBidding::where('auction_item_id', $aucItem->id)->orderBy('created_at', 'desc')->first();
+        if($bid){
+            return '£'.$bid->bid;
+        }
+        return;
+    }
+
     public function getBiddding() {
         $aucItem = AuctionItem::where('product_id', $this->id)->first();
         return ProductBidding::where('auction_item_id', $aucItem->id)->get();

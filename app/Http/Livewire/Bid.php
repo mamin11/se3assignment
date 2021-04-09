@@ -10,8 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class Bid extends Component
 {
     public $product;
+    public $aucItem;
     public $price;
+    public $endSale = false;
     
+    protected $listeners = ['timeUp'];
+
+    public function mount() {
+        $this->aucItem = AuctionItem::where('product_id', $this->product->id)->first();
+    }
+
     //custom validation messages
     private $customMessages = [
         'required' => 'Please enter a value',
@@ -23,10 +31,9 @@ class Bid extends Component
     ];
 
     public function placeBid() {
-        $aucItem = AuctionItem::where('product_id', $this->product->id)->first();
         
         //get latest bid
-        $latestbid = ProductBidding::where('auction_item_id', $aucItem->id)->orderBy('created_at', 'desc')->first();
+        $latestbid = ProductBidding::where('auction_item_id', $this->aucItem->id)->orderBy('created_at', 'desc')->first();
 
         //rules
         $rules = [
@@ -42,16 +49,26 @@ class Bid extends Component
             //create bid
             ProductBidding::create([
                 'user_id' => Auth::user()->id,
-                'auction_item_id' => $aucItem->id,
+                'auction_item_id' => $this->aucItem->id,
                 'bid' => $this->price,
             ]);
     
+            $this->emitTo('latest-bid', 'newBid');
+            $this->price = '';
             //redirect to refresh
-            return redirect()->route('bidonitem', ['id' => $aucItem->id]);
+            // return redirect()->route('bidonitem', ['id' => $this->aucItem->id]);
         }
         
-        return;
+        // return;
 
+    }
+
+    public function timeUp() {
+        $this->endSale = true;
+
+        //sell the item
+
+        //set sold to true
     }
     
     public function render()

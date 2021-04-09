@@ -1,7 +1,17 @@
 <x-guest-layout>
-    {{-- <div class="container mx-auto flex flex-col items-center justify-center ">
-        BID HERE
-    </div> --}}
+
+            @livewire('bid-purchased', ['product' => $product], key($product->id))
+
+    <style>
+        #status:checked {
+            background-color: #22c55e; /* bg-green-500 */
+        }
+
+        #status:checked ~ span:last-child {
+            --tw-translate-x: 1.75rem; /* translate-x-7 */
+        }
+    </style>
+
 
     <div class="min-w-screen min-h-screen bg-white-800 flex items-center p-5 lg:p-10 overflow-hidden relative">
         <div class="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
@@ -32,11 +42,33 @@
                         @livewire('latest-bid', ['product' => $product], key($product->id))
                     </div>
                     <div class="my-10">
-                        <h4 class=" tracking-wide mb-3 text-2xl"><span class="font-semibold text-2xl text-red-600">Closing in:</span> 00:05:49 </h4>
-                        @livewire('bid', ['product' => $product], key($product->id))
+                        <div class="m-5">
+                            @auth
+                                @if(Auth::user()->role_id == 1)
+                                    @livewire('auction-status', ['product' => $product], key($product->id))
+                                @endif
+                            @endauth
+                        </div>
+                        {{-- @livewire('bid-timer') --}}
+                            @livewire('bid', ['product' => $product], key($product->id))
                     </div>
+
+                    <div class="my-8">
+                        @livewire('bid-call-alerts', ['product' => $product], key($product->id))
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- only show to admin --}}
+    @auth
+        @if(Auth::user()->role_id == 1)
+            <div class="container mx-auto flex flex-col items-center justify-center ">
+                @livewire('bid-calls', ['product' => $product], key($product->id))
+            </div>
+        @endif
+    @endauth
+
 </x-guest-layout>
