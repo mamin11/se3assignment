@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -40,14 +40,17 @@
                         {{ __('FAQs') }}
                     </x-jet-nav-link> --}}
 
+                    @auth
                     @if(Auth::user()->role_id !== null)
                         <x-jet-nav-link href="/admin" >
                             {{ __('Admin') }}
                         </x-jet-nav-link>
                     @endif
+                    @endauth
                 </div>
             </div>
 
+            @auth
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -152,6 +155,8 @@
                     </x-jet-dropdown>
                 </div>
             </div>
+
+            @endauth
 
     
                 <!-- Hamburger -->
