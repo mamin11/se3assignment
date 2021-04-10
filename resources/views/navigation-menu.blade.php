@@ -28,7 +28,7 @@
                         {{ __('Locations') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('contact')">
+                    <x-jet-nav-link href="{{ route('services') }}" :active="request()->routeIs('services')">
                         {{ __('Services') }}
                     </x-jet-nav-link>
 
@@ -36,9 +36,9 @@
                         {{ __('Contact') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('contact')">
+                    {{-- <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('contact')">
                         {{ __('FAQs') }}
-                    </x-jet-nav-link>
+                    </x-jet-nav-link> --}}
 
                     @if(Auth::user()->role_id !== null)
                         <x-jet-nav-link href="/admin" >
@@ -200,7 +200,7 @@
                 </div>
                 
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+                    <x-jet-nav-link href="{{ route('services') }}" :active="request()->routeIs('services')">
                         {{ __('Services') }}
                     </x-jet-nav-link>
                 </div>
@@ -211,11 +211,11 @@
                     </x-jet-nav-link>
                 </div>
                 
-                <div class="pt-2 pb-3 space-y-1">
+                {{-- <div class="pt-2 pb-3 space-y-1">
                     <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                         {{ __('FAQs') }}
                     </x-jet-nav-link>
-                </div>
+                </div> --}}
                 
                 @guest
                 <div class="pt-2 pb-3 space-y-1">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,5 +18,10 @@ class MyItemsController extends Controller
             'soldItems' => $soldItems,
             'boughtItems' => $boughtItems
         ]);
+    }
+
+    public function services() {
+        $services = ProductCategory::all();
+        return view('services')->with('services', $services);
     }
 }
