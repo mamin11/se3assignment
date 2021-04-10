@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('locations', function () {
+    return view('locations');
+})->name('locations');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'MyItemsController@index')->name('dashboard');
 
 Route::get('contact', 'ContactController@index')->name('contact');
