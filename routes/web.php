@@ -1,5 +1,8 @@
 <?php
 
+use App\EmailList;
+use App\ProductCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\ContactController;
 
@@ -15,7 +18,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $paintings = ProductCategory::where('name', 'Paintings')->first();
+    $sculptures = ProductCategory::where('name', 'Sculptures')->first();
+    $prints = ProductCategory::where('name', 'Photography')->first();
+    return view('home')->with([
+        'paintings' => $paintings,
+        'prints' => $prints,
+        'sculptures' => $sculptures
+    ]);
+})->name('home');
+
+Route::post('newsletter', function (Request $request) {
+    //validate
+    $validatedData = $request->validate([
+        'email' => 'required|email|unique:email_lists,email',
+    ]);
+
+    //create
+    EmailList::create([
+        'email' => $request->email
+    ]);
+
+    //refresh
+    return redirect()->route('home');
 });
 
 Route::get('locations', function () {

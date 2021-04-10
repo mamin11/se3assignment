@@ -19,7 +19,7 @@
                         </x-jet-nav-link>
                         @endauth
 
-                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                             {{ __('Home') }}
                         </x-jet-nav-link>
 
@@ -27,7 +27,7 @@
                             {{ __('Auctions') }}
                         </x-jet-nav-link>
 
-                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        <x-jet-nav-link href="{{ route('locations') }}" :active="request()->routeIs('locations')">
                             {{ __('Locations') }}
                         </x-jet-nav-link>
 
@@ -87,7 +87,7 @@
                 @endauth
                 
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-jet-nav-link>
                 </div>
@@ -99,7 +99,7 @@
                 </div>
                 
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('locations') }}" :active="request()->routeIs('locations')">
                         {{ __('Locations') }}
                     </x-jet-nav-link>
                 </div>
