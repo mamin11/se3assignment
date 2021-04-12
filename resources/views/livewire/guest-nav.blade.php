@@ -93,7 +93,7 @@
                 </div>
                 
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('auction') }}" :active="request()->routeIs('auction')">
                         {{ __('Auctions') }}
                     </x-jet-nav-link>
                 </div>
