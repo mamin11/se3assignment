@@ -111,10 +111,10 @@
 
 
     {{-- newsletter starts here  --}}
-    <div class="container-fluid  bg-white flex flex-col justify-center items-center py-10">
+    <div class="container-fluid w-screen  bg-white flex flex-col justify-center items-center py-10">
         <form action="/newsletter" method="POST">
         <div class="text-center max-w-xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-bold mb-5 text-red-900">Subscribe to Our Newsletter</h1>
+            <h1 class="text-2xl md:text-6xl font-bold mb-5 text-red-900">Subscribe to Our Newsletter</h1>
         </div>
         <div class='flex justify-between max-w-md p-1 bg-white shadow-lg rounded-full overflow-hidden mx-auto'>
         
