@@ -17,7 +17,7 @@
                 {{$call3->status ? 'FINAL CALL' : 'CALLING....'}}
             </div>
             <div class="alert-description text-sm {{$call3->status ? 'text-white' : 'text-gray-600'}} " wire:poll>
-                {{$call3->status ? 'This is the final call at £'..'.00' : 'This item will be sold after next call'}}
+                {{$call3->status ? 'This is the final call at £.00' : 'This item will be sold after next call'}}
             </div>
         </div>
     </div>
