@@ -35,6 +35,20 @@ class Bid extends Component
         //get latest bid
         $latestbid = ProductBidding::where('auction_item_id', $this->aucItem->id)->orderBy('created_at', 'desc')->first();
 
+        // dd($latestbid);
+        
+        //if bid is not there, create product min price as bid
+        if($latestbid == null) {
+            $prodPrice = $this->aucItem->getProduct()->price_start;
+
+            //create bid
+            ProductBidding::create([
+                'user_id' => Auth::user()->id,
+                'auction_item_id' => $this->aucItem->id,
+                'bid' => $prodPrice,
+            ]);
+        }
+
         //rules
         $rules = [
             'price' => 'required|unique:product_biddings,bid'
